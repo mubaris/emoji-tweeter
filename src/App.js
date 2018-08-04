@@ -48,12 +48,12 @@ class App extends Component {
         </Row>
         <Row type="flex" justify="center" align="middle">
           <Col span={8}>
-            <TextArea data-gramm_editor="false" style={{ margin: "10px" }} value={this.state.value} onChange={this.valueChange} rows={3} />
+            <TextArea data-gramm_editor={false} style={{ margin: "10px" }} value={this.state.value} onChange={this.valueChange} rows={3} />
           </Col>
         </Row>
         <Row type="flex" justify="space-around" align="middle">
           <Col span={8}>
-            <TextArea data-gramm_editor="false" style={{ margin: "10px" }} value={this.state.tweet} rows={3} />
+            <TextArea data-gramm_editor={false} style={{ margin: "10px" }} value={this.state.tweet} rows={3} />
           </Col>
         </Row>
         <Row type="flex" justify="space-around" align="middle">
