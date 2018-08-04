@@ -1,5 +1,4 @@
 @import '~antd/dist/antd.css';
-
 .App {
   text-align: center;
 }
@@ -25,48 +24,107 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 textarea.ant-design {
   margin: 10px;
 }
 
-body, html {
+body,
+html {
   padding-top: 25px;
 }
 
 .levelsio-by {
-  font-family:"Helvetica Neue",sans-serif;
-  right:0;
-  bottom:0;
-  position:fixed;
-  z-index:100;
+  font-family: "Helvetica Neue", sans-serif;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
   border-top-left-radius: 5px;
   padding: 6px;
-  border-top:1px solid #efefef;
-  border-left:1px solid #efefef;
-  background:#1890ff;
-  color:#fff;
-  text-decoration:none;
+  border-top: 1px solid #efefef;
+  border-left: 1px solid #efefef;
+  background: #1890ff;
+  color: #fff;
+  text-decoration: none;
 }
+
 .levelsio-by:hover {
-  background:#fff;
-  color:#1890ff; /* change to your main brand color */
+  background: #fff;
+  color: #1890ff;
+  /* change to your main brand color */
 }
+
 .levelsio-by img {
-  border-radius:100%;
-  width:22px;
-  vertical-align:middle;
+  border-radius: 100%;
+  width: 22px;
+  vertical-align: middle;
 }
+
 .levelsio-by p {
-  margin:0;
-  vertical-align:middle;
-  display:inline;
-  margin-left:7px;
-  font-weight:500;
-  font-size:14px;
+  margin: 0;
+  vertical-align: middle;
+  display: inline;
+  margin-left: 7px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.bmc-button img {
+  width: 27px !important;
+  margin-bottom: 1px !important;
+  box-shadow: none !important;
+  border: none !important;
+  vertical-align: middle !important;
+}
+
+.bmc-button {
+  line-height: 36px !important;
+  height: 37px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  color: #ffffff !important;
+  background-color: #FF813F !important;
+  border-radius: 3px !important;
+  border: 1px solid transparent !important;
+  padding: 1px 9px !important;
+  font-size: 23px !important;
+  letter-spacing: 0.6px !important;
+  ;
+  box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+  margin: 0 auto !important;
+  font-family: 'Cookie', cursive !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  -o-transition: 0.3s all linear !important;
+  -webkit-transition: 0.3s all linear !important;
+  -moz-transition: 0.3s all linear !important;
+  -ms-transition: 0.3s all linear !important;
+  transition: 0.3s all linear !important;
+}
+
+.bmc-button:hover,
+.bmc-button:active,
+.bmc-button:focus {
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+  text-decoration: none !important;
+  box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+  opacity: 0.85 !important;
+  color: #ffffff !important;
+}
+
+.center__area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* textarea {
