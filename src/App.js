@@ -108,7 +108,7 @@ class App extends Component {
                 visible={this.state.showPicker}
                 placement="bottom"
                 onVisibleChange={this.handleVisibleChange}
-                content={<Picker onSelect={this.selectEmoji} title='Pick your emoji…' emoji='clap' />}
+                content={<Picker autoFocus={true} onSelect={this.selectEmoji} title='Pick your emoji…' emoji='clap' />}
               >
                 <Button icon="heart" style={{ marginRight: "5px" }}  type="">Change Emoji</Button>
               </Popover>
