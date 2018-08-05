@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Input, Row, Col, Button, notification, Progress, Checkbox } from 'antd';
+import { Input, Row, Col, Button, notification, Progress, Checkbox, Popover } from 'antd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { parseTweet } from 'twitter-text';
+import { Picker } from 'emoji-mart';
 
+import 'emoji-mart/css/emoji-mart.css';
 import './App.css';
 
 const { TextArea } = Input;
@@ -10,21 +12,45 @@ const { TextArea } = Input;
 class App extends Component {
   constructor(props) {
     super(props);
+    this.handleVisibleChange = this.handleVisibleChange.bind(this);
+    this.clickEmoji = this.clickEmoji.bind(this);
     this.toCapitalize = this.toCapitalize.bind(this);
     this.tweetQuote = this.tweetQuote.bind(this);
     this.valueChange = this.valueChange.bind(this);
     this.onCopy = this.onCopy.bind(this);
+    this.selectEmoji = this.selectEmoji.bind(this);
     this.state = {
       'value': 'Wow This is amazing',
       'tweet': '👏 Wow 👏 This 👏 is 👏 amazing 👏',
+      'emoji': '👏',
       'copied': false,
-      'capital': false
+      'capital': false,
+      'showPicker': false
     }
+  }
+  selectEmoji(e) {
+    // this.setState({ emoji: e.native, showPicker: false });
+    const value = this.state.value;
+    // let tweet = '👏 ' + value.trim().split(' ').join(' 👏 ') + ' 👏';
+    const emoji = e.native;
+    let tweet = `${emoji} ${value.trim().split(' ').join(` ${emoji} `)} ${emoji}`;
+    if (this.state.capital) {
+      tweet = tweet.toUpperCase();
+    }
+    this.setState({ emoji, showPicker: false, value, tweet, copied: false });
+  }
+  handleVisibleChange = (showPicker) => {
+    this.setState({ showPicker });
+  }
+  clickEmoji(e) {
+    this.setState({ posX: e.screenX, posY: e.screenY, showPicker: true })
   }
   toCapitalize(e) {
     const capital = e.target.checked;
     const value = this.state.value;
-    let tweet = '👏 ' + value.trim().split(' ').join(' 👏 ') + ' 👏';
+    const emoji = this.state.emoji;
+    // let tweet = '👏 ' + value.trim().split(' ').join(' 👏 ') + ' 👏';
+    let tweet = `${emoji} ${value.trim().split(' ').join(` ${emoji} `)} ${emoji}`;
     if (capital) {
       tweet = tweet.toUpperCase();
     }
@@ -46,7 +72,9 @@ class App extends Component {
   }
   valueChange(e) {
     const value = e.target.value;
-    let tweet = '👏 ' + value.trim().split(' ').join(' 👏 ') + ' 👏';
+    // let tweet = '👏 ' + value.trim().split(' ').join(' 👏 ') + ' 👏';
+    const emoji = this.state.emoji;
+    let tweet = `${emoji} ${value.trim().split(' ').join(` ${emoji} `)} ${emoji}`;
     if (this.state.capital) {
       tweet = tweet.toUpperCase();
     }
@@ -55,6 +83,12 @@ class App extends Component {
   render() {
     const len = parseTweet(this.state.tweet).weightedLength;
     const percent = Number((len * 100 / 280).toFixed(2));
+    const pickerStyle = {
+      position: 'absolute',
+      right: '1em',
+      bottom: '4em',
+      zIndex: 9999
+    }
     // const cap = this.state.capital;
     return (
       <div>
@@ -78,6 +112,16 @@ class App extends Component {
         </Row>
         <Row type="flex" justify="space-around" align="middle">
           <Col span={24} style={{ textAlign: "center", paddingTop: "5px" }}>
+            <Popover
+              trigger="click"
+              visible={this.state.showPicker}
+              placement="bottom"
+              onVisibleChange={this.handleVisibleChange}
+              content={<Picker onSelect={this.selectEmoji} title='Pick your emoji…' emoji='clap' />}
+            >
+              <Button icon="heart" style={{ marginRight: "5px" }}  type="primary">Change Emoji</Button>
+            </Popover>
+            {/* {this.state.showPicker && <Picker style={pickerStyle} title='Pick your emoji…' emoji='clap' />} */}
             <CopyToClipboard text={this.state.tweet} onCopy={() => this.onCopy()}>
               <Button icon="copy" style={{ marginRight: "5px" }}  type="primary">Copy</Button>
             </CopyToClipboard>
