@@ -101,7 +101,18 @@ class App extends Component {
           <Col span={12}>
             <TextArea data-gramm_editor={false} style={{ margin: "10px" }} value={this.state.value} onChange={this.valueChange} rows={3} />
             {/* <Checkbox className="center__area" checked={this.state.capital} onChange={this.toCapitalize}>{cap ? "CAPITALIZE" : "Capitalize"}</Checkbox> */}
-            <Checkbox className="center__area" checked={this.state.capital} onChange={this.toCapitalize}>Capitalize</Checkbox>
+            <div className="center__area">
+              <Checkbox className="center__area" checked={this.state.capital} onChange={this.toCapitalize}>Capitalize</Checkbox>
+              <Popover
+                trigger="click"
+                visible={this.state.showPicker}
+                placement="bottom"
+                onVisibleChange={this.handleVisibleChange}
+                content={<Picker onSelect={this.selectEmoji} title='Pick your emoji…' emoji='clap' />}
+              >
+                <Button icon="heart" style={{ marginRight: "5px" }}  type="">Change Emoji</Button>
+              </Popover>
+            </div>
           </Col>
         </Row>
         <Row type="flex" justify="space-around" align="middle">
@@ -112,15 +123,6 @@ class App extends Component {
         </Row>
         <Row type="flex" justify="space-around" align="middle">
           <Col span={24} style={{ textAlign: "center", paddingTop: "5px" }}>
-            <Popover
-              trigger="click"
-              visible={this.state.showPicker}
-              placement="bottom"
-              onVisibleChange={this.handleVisibleChange}
-              content={<Picker onSelect={this.selectEmoji} title='Pick your emoji…' emoji='clap' />}
-            >
-              <Button icon="heart" style={{ marginRight: "5px" }}  type="primary">Change Emoji</Button>
-            </Popover>
             {/* {this.state.showPicker && <Picker style={pickerStyle} title='Pick your emoji…' emoji='clap' />} */}
             <CopyToClipboard text={this.state.tweet} onCopy={() => this.onCopy()}>
               <Button icon="copy" style={{ marginRight: "5px" }}  type="primary">Copy</Button>
