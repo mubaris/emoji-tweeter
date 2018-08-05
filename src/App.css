@@ -127,6 +127,14 @@ html {
   align-items: center;
 }
 
+.ant-progress-status-success .ant-progress-bg {
+  background-color: #f5222d;
+}
+
+.ant-progress-status-success .ant-progress-text {
+  color: #f5222d;
+}
+
 /* textarea {
   display: block;
   margin-left: auto;

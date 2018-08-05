@@ -3,7 +3,6 @@ import { Input, Row, Col, Button, notification, Progress, Checkbox } from 'antd'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { parseTweet } from 'twitter-text';
 
-import logo from './logo.svg';
 import './App.css';
 
 const { TextArea } = Input;
@@ -56,7 +55,7 @@ class App extends Component {
   render() {
     const len = parseTweet(this.state.tweet).weightedLength;
     const percent = Number((len * 100 / 280).toFixed(2));
-    const cap = this.state.capital;
+    // const cap = this.state.capital;
     return (
       <div>
         <Row type="flex" justify="center" align="middle">
@@ -88,7 +87,7 @@ class App extends Component {
             </div>
           </Col>
         </Row>
-        <a target="_blank" rel="noopener noreferrer" className="levelsio-by" href="https://twitter.com/Mubaris_NK"><img src="https://pbs.twimg.com/profile_images/975936934949212161/AySAHTaz_400x400.jpg" /><p>by Mubaris NK</p></a>
+        <a target="_blank" rel="noopener noreferrer" className="levelsio-by" href="https://twitter.com/Mubaris_NK"><img alt="Mubaris NK" src="https://pbs.twimg.com/profile_images/975936934949212161/AySAHTaz_400x400.jpg" /><p>by Mubaris NK</p></a>
       </div>
     );
   }
