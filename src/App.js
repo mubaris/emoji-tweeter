@@ -94,7 +94,7 @@ class App extends Component {
       <div>
         <Row type="flex" justify="center" align="middle">
           <Col span={12}>
-            <h1 style={{ textAlign: "center" }}>Clap 👏 Tweeter</h1>
+            <h1 style={{ textAlign: "center" }}>{`Emoji ${this.state.emoji} Tweeter`}</h1>
           </Col>
         </Row>
         <Row type="flex" justify="center" align="middle">
